@@ -1,0 +1,21 @@
+service: prometheus-grafana
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  deploymentBucket:
+    name: grafanaaws
+ 
+functions:
+  hello:
+    handler: handler.hello
+    events:
+      - http:
+          path: /{proxy+}
+          method: ANY
+      - http:
+          path: /
+          method: ANY
+    environment:
+      PORT: 8000
