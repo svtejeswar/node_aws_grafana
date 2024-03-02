@@ -14,6 +14,7 @@ const meterReadingsCounter = new client.Counter({
 const meters = new Map();
 app.use(bodyParser.json());
 
+
 const tankLevel = new client.Gauge({
   name: 'tank_level',
   help: 'Current level of the tank',
@@ -152,6 +153,7 @@ app.get('/metrics', async (req, res) => {
 const port = 8000;
 app.listen(port, () => {
   console.log(`Energy meter exporter listening at http://localhost:${port}`);
+  console.log(port)
 });
 
 
